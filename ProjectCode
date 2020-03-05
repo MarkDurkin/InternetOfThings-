@@ -1,0 +1,62 @@
+const int analogPin = A0;// pin that the sensor is attached to
+const int analogPin2 = A1;
+const int analogPin3 = A2;
+const int analogPin4 = A3;
+const int ledPin = 13;
+const int ledPin2 = 1;
+const int ledPin3 = 1;
+const int ledPin4 = 1;// pin that the LED is attached to
+const int threshold = 200;   // an arbitrary threshold level that's in the range of the analog input
+
+void setup() {
+  // initialize the LED pin as an output:
+  pinMode(ledPin, OUTPUT);
+  // initialize serial communications:
+  Serial.begin(9600);
+}
+
+void loop() {
+  // read the value of the potentiometer:
+  int analogValue = analogRead(analogPin);
+  int analogValue2 = analogRead(analogPin2);
+  int analogValue3 = analogRead(analogPin3);
+  int analogValue4 = analogRead(analogPin4);
+  
+  int sensorValue = analogRead(A0);
+  int sensorValue2 = analogRead(A1);
+  int sensorValue3 = analogRead(A2);
+  int sensorValue4 = analogRead(A3);
+
+
+  // print out the value you read:
+  Serial.println(sensorValue);
+  delay(1);   
+
+  // if the analog value is high enough, turn on the LED:
+  if (analogValue < threshold) {
+    digitalWrite(ledPin, HIGH);
+  } else {
+    digitalWrite(ledPin, LOW);
+  }
+
+    if (analogValue2 < threshold) {
+    digitalWrite(ledPin2, HIGH);
+  } else {
+    digitalWrite(ledPin2, LOW);
+  }
+    if (analogValue3 < threshold) {
+    digitalWrite(ledPin3, HIGH);
+  } else {
+    digitalWrite(ledPin3, LOW);
+  }
+
+    if (analogValue4 < threshold) {
+    digitalWrite(ledPin4, HIGH);
+  } else {
+    digitalWrite(ledPin4, LOW);
+  }
+
+  // print the analog value:
+  Serial.println(analogValue);
+  delay(1);        // delay in between reads for stability
+}
